@@ -1,0 +1,20 @@
+{
+  "name": "jsefton/web-push",
+  "type": "library",
+  "description": "Allows web push notifications to be sent to micro service",
+  "keywords": ["php"],
+  "homepage": "https://github.com/jsefton/web-push",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jamie Sefton",
+      "email": "jamie.sefton@parall.ax"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-0": {
+      "Jsefton\\WebPush": "src"
+    }
+  }
+}
