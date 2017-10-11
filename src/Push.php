@@ -26,8 +26,14 @@ class Push
         ]
     ];
 
+    /**
+     * @var string
+     */
     protected $apiDomain;
 
+    /**
+     * @var string
+     */
     protected $apiKey = "";
 
     /**
@@ -38,6 +44,11 @@ class Push
         'notify' => '/notify'
     ];
 
+    /**
+     * Init the Push API and set API Key
+     * @param $key
+     * @return Push
+     */
     public static function init($key)
     {
         $obj = new self;
@@ -46,11 +57,28 @@ class Push
         return $obj;
     }
 
+
     public function send($opts)
     {
         pr($opts);
     }
 
+    /**
+     * Allow override to custom domain for api calls
+     * @param $domain
+     * @return $this
+     */
+    public function setDomain($domain)
+    {
+        $this->apiDomain = $domain;
+        return $this;
+    }
+
+    /**
+     * Switch mode which sets domain and other options
+     * @param $mode
+     * @return $this
+     */
     public function setMode($mode)
     {
         $this->mode = $mode;
