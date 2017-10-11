@@ -65,6 +65,11 @@ class Push
             'payload' => json_encode($opts['payload'])
         ];
 
+        // If delay is passed then relay it on
+        if(isset($opts['delay'])) {
+            $request['delay'] = $opts['delay'];
+        }
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->apiDomain . $this->endpoints['notify']);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
