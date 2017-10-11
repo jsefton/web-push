@@ -40,8 +40,8 @@ class Push
      * @var array
      */
     protected $endpoints = [
-        'subscribe' => '/subscribe',
-        'notify' => '/notify'
+        'subscribe' => '/api/subscribe',
+        'notify' => '/api/notify'
     ];
 
     /**
@@ -60,7 +60,20 @@ class Push
 
     public function send($opts)
     {
-        pr($opts);
+        $request = [
+            'site' => $opts['site'],
+            'payload' => json_encode($opts['payload'])
+        ];
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $this->apiDomain . $this->endpoints['notify']);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($request));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type:application/json']);
+        $result = curl_exec($ch);
+
+        return $this;
     }
 
     /**
