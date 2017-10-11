@@ -9,13 +9,26 @@ class Push
     /**
      * @var string
      */
-    protected $mode = 'sandbox';
+    protected $mode = 'live';
 
     /**
      * @var string
      */
-    protected $apiDomain = "http://web-push.dev";
-    protected $sandboxApiDomain = "http://web-push.dev";
+    protected $modes = [
+        'sandbox' => [
+            'apiDomain' => "https://web-push.qa.parall.ax"
+        ],
+        'dev' => [
+            'apiDomain' => 'http://web-push.dev'
+        ],
+        'live' => [
+            'apiDomain' => 'https://web-push.exposecms.com'
+        ]
+    ];
+
+    protected $apiDomain;
+
+    protected $apiKey = "";
 
     /**
      * @var array
@@ -25,8 +38,23 @@ class Push
         'notify' => '/notify'
     ];
 
-    public static function send($opts)
+    public static function init($key)
+    {
+        $obj = new self;
+        $obj->apiKey = $key;
+        $obj->setMode($obj->mode);
+        return $obj;
+    }
+
+    public function send($opts)
     {
         pr($opts);
+    }
+
+    public function setMode($mode)
+    {
+        $this->mode = $mode;
+        $this->apiDomain = $this->modes[$mode]['apiDomain'];
+        return $this;
     }
 }

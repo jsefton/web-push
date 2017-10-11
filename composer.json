@@ -12,10 +12,9 @@
     }
   ],
   "require": {},
-    "autoload": {
-        "psr-4": {
-            "Jsefton\\WebPush\\": "src/"
-        }
-    },
-    "minimum-stability": "dev"
+  "autoload": {
+    "psr-0": {
+      "Jsefton\\WebPush\\": "src/"
+    }
+  }
 }
