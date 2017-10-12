@@ -36,4 +36,4 @@ Allows to switch between different API modes and domains that are preset.
 Allows to override the API domain that requests are sent too.
 
 `send`
-Array of data that is passed onto the API. Requires `payload` as an array of support web push data. `site` optional to bind for a specific site.
+Array of data that is passed onto the API. Requires `payload` as an array of supportted web push data. `site` optional to bind for a specific site.
