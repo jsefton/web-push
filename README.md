@@ -1,4 +1,13 @@
-# web-push
+# Web Push
+
+This package allows you to connect into a micro service for handling web push notifications.
+
+
+### Installation
+
+```bash
+composer require jsefton/web-push
+```
 
 
 ### Usage
@@ -14,3 +23,17 @@ Push::init("API_KEY")
         ]
     ]);
 ```
+
+#### Methods
+
+`init`
+First method that should be called passing in a valid API key.
+
+`setMode`
+Allows to switch between different API modes and domains that are preset.
+
+`setDomain`
+Allows to override the API domain that requests are sent too.
+
+`send`
+Array of data that is passed onto the API. Requires `payload` as an array of support web push data. `site` optional to bind for a specific site.
